@@ -1,0 +1,16 @@
+<form (ngSubmit)="submit()">
+  <div>
+    <label for="emotion">Emotion:</label>
+    <input id="emotion" type="text" name="emotion" [(ngModel)]="emotion" />
+  </div>
+  <div>
+    <label for="description">What happened to cause that emotion?</label>
+    <textarea
+      id="description"
+      type="text"
+      name="description"
+      [(ngModel)]="description"
+    ></textarea>
+  </div>
+  <button>Save</button>
+</form>
