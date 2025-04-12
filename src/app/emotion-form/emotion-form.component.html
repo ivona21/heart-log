@@ -1,18 +1,28 @@
 <form (ngSubmit)="submit()">
-  <div>
-    <div class="input-group">
-      <label for="emotion">Emotion:</label>
-      <input id="emotion" type="text" name="emotion" [(ngModel)]="emotion" />
+  <div class="flex flex-col p-4 w-1/2">
+    <div class="flex flex-col w-full">
+      <label class="py-3" for="emotion">Emotion:</label>
+      <input
+        id="emotion"
+        type="text"
+        name="emotion"
+        [(ngModel)]="emotion"
+        class="input w-full"
+      />
     </div>
-    <div class="input-group">
-      <label for="description">What happened to cause that emotion?</label>
+    <div class="flex flex-col w-full">
+      <label class="py-3" for="description"
+        >What happened to cause that emotion?</label
+      >
       <textarea
+        rows="10"
+        class="textarea w-full"
         id="description"
         type="text"
         name="description"
         [(ngModel)]="description"
       ></textarea>
     </div>
-    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-primary mt-4 w-full">Save</button>
   </div>
 </form>
