@@ -3,3 +3,8 @@ export default interface EmotionLog {
   description: string;
   date: Date;
 }
+
+export type GroupedEmotionLog = {
+  date: Date;
+  logs: EmotionLog[];
+};

@@ -1,4 +1,10 @@
 <h2>Emotions:</h2>
-@for (emotion of emotions(); track emotion.date) {
-  <div>{{ emotion.emotion }}: {{ emotion.description }}</div>
+
+@for (emotionGroup of groupedByDateEmotions(); track emotionGroup.date) {
+  <h3>{{ emotionGroup.date }}</h3>
+  <ul>
+    @for (emotion of emotionGroup.logs; track emotion.date) {
+      <li>{{ emotion.emotion }} - {{ emotion.description }}</li>
+    }
+  </ul>
 }

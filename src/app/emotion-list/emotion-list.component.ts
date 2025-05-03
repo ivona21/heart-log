@@ -1,6 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
-import EmotionLog from '../emotion-form/emotion-log.interface';
-import { getEmotionLogsFromLocalStorage } from '../helper';
+import { Component, computed, OnInit, signal } from '@angular/core';
+import EmotionLog, {
+  GroupedEmotionLog,
+} from '../emotion-form/emotion-log.interface';
+import {
+  getEmotionLogsFromLocalStorage,
+  groupEmotionLogsByDate,
+} from '../helper';
 
 @Component({
   selector: 'app-emotion-list',
@@ -10,6 +15,9 @@ import { getEmotionLogsFromLocalStorage } from '../helper';
 })
 export class EmotionListComponent implements OnInit {
   emotions = signal<EmotionLog[]>([]);
+  groupedByDateEmotions = computed<GroupedEmotionLog[]>(() => {
+    return groupEmotionLogsByDate(this.emotions());
+  });
 
   ngOnInit(): void {
     this.emotions.set(getEmotionLogsFromLocalStorage());

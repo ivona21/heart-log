@@ -1,4 +1,6 @@
-import EmotionLog from './emotion-form/emotion-log.interface';
+import EmotionLog, {
+  GroupedEmotionLog,
+} from './emotion-form/emotion-log.interface';
 
 export function getEmotionLogsFromLocalStorage(): EmotionLog[] {
   const storedLogs = localStorage.getItem('emotionLogs');
@@ -28,4 +30,25 @@ export function getEmotionLogsFromLocalStorage(): EmotionLog[] {
     }
   }
   return emotions;
+}
+
+export function groupEmotionLogsByDate(
+  logs: EmotionLog[],
+): GroupedEmotionLog[] {
+  const groupedMap = new Map<string, EmotionLog[]>();
+
+  for (const log of logs) {
+    const dateKey = log.date.toISOString().split('T')[0]; // 'YYYY-MM-DD'
+    if (!groupedMap.has(dateKey)) {
+      groupedMap.set(dateKey, []);
+    }
+    groupedMap.get(dateKey)!.push(log);
+  }
+
+  return Array.from(groupedMap.entries())
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([dateString, logs]) => ({
+      date: new Date(dateString),
+      logs,
+    }));
 }
