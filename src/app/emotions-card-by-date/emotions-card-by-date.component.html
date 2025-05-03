@@ -1,1 +1,18 @@
-<p>emotions-card-by-date works!</p>
+<div class="max-w-sm rounded overflow-hidden shadow-lg p-5">
+  <h4 class="font-semibold">{{ dateCardWithLogs()?.date | date }}</h4>
+  <ul class="list-disc p-3 mt-7">
+    @for (log of dateCardWithLogs()?.logs; track log.date) {
+      @if (log.emotion) {
+        <li class="mb-10">
+          <div class="pb-4 underline">
+            <span class="font-bold">{{ log.emotion }}</span> -
+            <span class="text-sm">({{ log.date | date: "shortTime" }})</span>
+          </div>
+          <div>
+            {{ log.description }}
+          </div>
+        </li>
+      }
+    }
+  </ul>
+</div>

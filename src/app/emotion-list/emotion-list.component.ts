@@ -6,10 +6,11 @@ import {
   getEmotionLogsFromLocalStorage,
   groupEmotionLogsByDate,
 } from '../helper';
+import { EmotionsCardByDateComponent } from '../emotions-card-by-date/emotions-card-by-date.component';
 
 @Component({
   selector: 'app-emotion-list',
-  imports: [],
+  imports: [EmotionsCardByDateComponent],
   templateUrl: './emotion-list.component.html',
   styleUrl: './emotion-list.component.css',
 })

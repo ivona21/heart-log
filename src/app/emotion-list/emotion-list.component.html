@@ -1,10 +1,7 @@
-<h2>Emotions:</h2>
-
-@for (emotionGroup of groupedByDateEmotions(); track emotionGroup.date) {
-  <h3>{{ emotionGroup.date }}</h3>
-  <ul>
-    @for (emotion of emotionGroup.logs; track emotion.date) {
-      <li>{{ emotion.emotion }} - {{ emotion.description }}</li>
-    }
-  </ul>
-}
+<div class="flex flex-col gap-10">
+  @for (emotionGroup of groupedByDateEmotions(); track emotionGroup.date) {
+    <app-emotions-card-by-date
+      [dateCardWithLogs]="emotionGroup"
+    ></app-emotions-card-by-date>
+  }
+</div>
