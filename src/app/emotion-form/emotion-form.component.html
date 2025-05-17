@@ -2,13 +2,16 @@
   <div class="flex flex-col p-4 w-full">
     <div class="flex flex-col w-full">
       <label class="py-3" for="emotion">Emotion:</label>
-      <input
+      <select
         id="emotion"
-        type="text"
         name="emotion"
         [(ngModel)]="emotion"
         class="input w-full"
-      />
+      >
+        @for (option of emotionOptions; track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
     </div>
     <div class="flex flex-col w-full">
       <label class="py-3" for="description"

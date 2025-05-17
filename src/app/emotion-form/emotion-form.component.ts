@@ -2,6 +2,7 @@ import { Component, inject, model, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import EmotionLog from './emotion-log.interface';
 import { LogalStorageService } from '../services/localStorage.service';
+import { emotionOptions } from '../constants/emotionOptions';
 
 @Component({
   selector: 'app-emotion-form',
@@ -13,6 +14,7 @@ export class EmotionFormComponent {
   emotion = '';
   description = '';
   localStorageService = inject(LogalStorageService);
+  emotionOptions = emotionOptions;
 
   setToLocalStorage(emotionLog: EmotionLog) {
     this.localStorageService.setEmotionToLocalStorage(emotionLog);
